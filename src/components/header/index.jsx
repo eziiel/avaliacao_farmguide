@@ -8,10 +8,17 @@ import { SearchPokemonContext } from '../../context/especific-search'
 function Header() {
   const { clearFilter } = React.useContext(SearchPokemonContext)
   return (
-    <div
-      className=" w-[300px] flex flex-col justify-center gap-8 
-      items-center fixed left-0 top-0 h-full shadow-component-sw 
-      bg-slate-900
+    <header
+      className=" w-full flex justify-center gap-8 p-8
+      items-center h-full shadow-component-sw 
+      bg-slate-900 duration-100
+
+      screen800:w-[300px]
+      screen800:fixed
+      screen800:flex-col
+      screen800:left-0 
+      screen800:top-0
+
     "
     >
       <img
@@ -23,13 +30,13 @@ function Header() {
         <InputTextSearch />
 
         <SpecificSearch />
-      </div>
       <ClearFilterButton 
         text='Limpar Filtro' 
         action={() => clearFilter()} 
-        className="bg-water py-2 px-12 rounded-2xl text-ice font-medium"  
+        className="bg-water p-2 w-full  rounded-2xl text-ice font-medium"  
       />
-    </div>
+      </div>
+    </header>
   )
 }
 

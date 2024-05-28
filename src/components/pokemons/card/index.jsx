@@ -8,8 +8,7 @@ export default function CardPokemon({ pokemon, type, image_url, hitpoints, abili
     <section
       className="max-h-[320px] min-h-[300px] rounded-3xl flex flex-col
         relative shadow-component-sw 
-        hover:scale-110 group duration-300  
-        
+        hover:scale-110 group duration-300
       "
     >
       <div className="flex flex-1 justify-around rounded-3xl items-center
@@ -22,7 +21,12 @@ export default function CardPokemon({ pokemon, type, image_url, hitpoints, abili
             <span>type:</span>
             <span>{type}</span>
           </div>
-          <div className='flex gap-2'>
+          <div className='flex gap-2 flex-col
+            screen800:flex-row
+            screen1050:flex-col
+            screen1400:flex-row
+
+          '>
             <span>habilidades:</span>
             <span>{abilities}</span>
           </div>

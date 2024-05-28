@@ -4,7 +4,9 @@ import { SearchPokemonProvider } from '../context/especific-search'
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen">
+    <div className="flex flex-col min-h-screen overflow-x-hidden
+
+    ">
       <SearchPokemonProvider>
         <Header />
         <MainPokemons />

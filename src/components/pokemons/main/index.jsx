@@ -8,7 +8,9 @@ export default function MainPokemons() {
   return (
     <main
       className="bg-slate-900 flex-1 flex justify-around 
-      gap-4 flex-col items-center ml-[300px]
+      gap-4 flex-col items-center 
+
+      screen800:ml-[300px]
     "
     >
       <header className="w-full h-[150px] border-b-2 flex-1
