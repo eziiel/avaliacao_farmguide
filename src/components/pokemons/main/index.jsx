@@ -46,7 +46,7 @@ export default function MainPokemons() {
 
         alt content
       </div>
-      <div className="w-2/3 bg-blue-700 p-8 grid grid-cols-2 gap-8"> 
+      <div className="w-2/3 p-8 grid grid-cols-2 gap-8"> 
 
         {pokemonsList.map((pokemon) => (
           <CardPokemon 
@@ -54,6 +54,7 @@ export default function MainPokemons() {
             pokemon={pokemon.pokemon}
             type={pokemon.type}
             image_url={pokemon.image_url}
+            hitpoints ={pokemon.hitpoints  }
           />
 
         ))}
