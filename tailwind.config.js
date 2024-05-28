@@ -33,6 +33,7 @@ export default {
         screen860: '860px',
         screen900: '900px',
         screen1050: '1050px',
+        screen1300: '1300px',
         screen1400: '1400px',
         screen1500: '1500px',
 

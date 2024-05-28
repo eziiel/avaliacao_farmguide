@@ -7,7 +7,7 @@ export default function CardPokemon({ pokemon, type, image_url, hitpoints, abili
   return (
     <section
       className="max-h-[320px] min-h-[300px] rounded-3xl flex flex-col
-        relative shadow-component-sw 
+        relative shadow-component-sw min-w-[300px]
         hover:scale-110 group duration-300
       "
     >

@@ -22,8 +22,9 @@ export default function MainPokemons() {
           className='animate-waving-hand-ten w-[150px] h-[150px]'
         />
       </header>
-      <div className="w-2/3 p-8 grid gap-16 min-h-[700px] flex-auto
-          screen1050:grid-cols-2
+      <div className="w-full p-8 grid gap-16 min-h-[700px] flex-auto
+          phone420:w-2/3
+          screen1300:grid-cols-2
       ">
         {pokemonsList.map((pokemon) => (
           <CardPokemon
