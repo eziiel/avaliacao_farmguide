@@ -48,7 +48,7 @@ export function SearchPokemonProvider({ children }) {
   React.useEffect(() => {
     const requestPokemons = async () => {
       try {
-        const response = await fetch('https://dummyapi.online/api/pokemon')
+        const response = await fetch(process.env.URL)
         const pokemons = await response.json()
 
         const orderedResponse = pokemons.sort((a, b) => {
