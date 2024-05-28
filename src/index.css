@@ -16,13 +16,13 @@ body {
 }
 
 *::-webkit-scrollbar {
-  width: 5px;            /* width of the entire scrollbar */
+  width: 5px;           
   border-radius: 20px;
-  background: linear-gradient(to bottom, #045A89, #011E2E);        /* color of the tracking area */
+  background: linear-gradient(to bottom, #045A89, #011E2E);      
 }
 
 *::-webkit-scrollbar-track-piece{
-  background: linear-gradient(to bottom, #045A89, #011E2E);        /* color of the tracking area */
+  background: linear-gradient(to bottom, #045A89, #011E2E);      
   border-radius: 30px;
 }
 
