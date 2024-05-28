@@ -1,100 +1,107 @@
 import React from 'react';
 import { SearchPokemonContext } from '../../../context/especific-search';
-import Hitpoints from '../../actions-search/hitpoints';
 
 export default function SpecificSearch() {
   const { 
     listOfAbilities, 
     listOfType, 
-    typeOfsearch, 
-    handleTypeOfsearch,
-    handleHitsPoint
-   } = React.useContext(SearchPokemonContext);
+    typeOfSearch, 
+    handleTypeOfsearch, 
+    handleHitsPoint 
+  
+  } = React.useContext(SearchPokemonContext);
+
   const [openType, setOpenType] = React.useState(false);
   const [openAbilities, setOpenAbilities] = React.useState(false);
+
+  const toggleDropdown = (dropdown) => {
+    if (dropdown === 'type') {
+      setOpenType(!openType);
+      if (openAbilities) setOpenAbilities(false);
+    } else if (dropdown === 'abilities') {
+      setOpenAbilities(!openAbilities);
+      if (openType) setOpenType(false);
+    }
+  };
+
+  const handleSelection = (type, item) => {
+    handleTypeOfsearch({ [type]: item });
+    setOpenType(false);
+    setOpenAbilities(false);
+  };
 
   return (
     <div className="flex flex-col gap-4 p-2">
       <div
-        className="py-2 px-12 flex justify-center items-center 
-          bg-slate-300 rounded-xl cursor-pointer relative 
-          shadow-component-sw
-        "
-        onClick={() => {
-          setOpenType(!openType);
-          if (openAbilities) {
-            setOpenAbilities(!openAbilities);
-          }
-        }}
+        className="flex justify-center items-center bg-slate-300 rounded-xl cursor-pointer relative shadow-component-sw"
+        onClick={() => toggleDropdown('type')}
       >
-        <button type="button">{typeOfsearch?.type || 'tipo'}</button>
+        <button 
+          type="button"
+          className={`${typeOfSearch?.type ? 'bg-blue-400' : 'bg-slate-300'} w-full py-2 px-12 rounded-xl`}
+
+        >
+          {typeOfSearch?.type || 'Tipo'}
+        </button>
         {openType && (
-          <div
-            className="flex flex-col absolute -right-[180px]
-            -top-[680%] h-[520px] overflow-scroll overflow-x-hidden
-            w-[150px] justify-center items-center rounded-lg
-            shadow-component-sw bg-slate-800 gap-2 p-4
-          "
-          >
-            {listOfType.map((item) => (
-              <button
-                type="button"
-                onClick={() => handleTypeOfsearch({ type: item })}
-                className="p-2 bg-slate-200 w-full rounded-md"
-                key={item}
-              >
-                {item}
-              </button>
-            ))}
+          <div className="absolute z-10 mt-2 w-full bg-white border border-gray-300 rounded-lg shadow-lg">
+            <div className="max-h-60 overflow-y-auto">
+              {listOfType.map((item) => (
+                <button
+                  type="button"
+                  onClick={() => {
+                    handleSelection('type', item)
+                  }}
+                  className={`p-2 w-full text-left ${typeOfSearch?.type === item ? 'bg-blue-300' : ''}`}
+                  key={item}
+                >
+                  {item}
+                </button>
+              ))}
+            </div>
           </div>
         )}
       </div>
+
       <div
-        className="py-2 px-12 flex justify-center items-center rounded-xl
-          cursor-pointer relative bg-slate-300 shadow-component-sw
-        "
+        className="flex justify-center items-center bg-slate-300 rounded-xl cursor-pointer 
+          relative shadow-component-sw-"
+        onClick={() => toggleDropdown('abilities')}
+      >
+        <button 
+          type="button"
+          className={`${typeOfSearch?.abilities ? 'bg-blue-400' : 'bg-slate-300'} w-full py-2 px-12 rounded-xl`}
+
+        >{typeOfSearch?.abilities || 'Habilidade'}</button>
+        {openAbilities && (
+          <div className="absolute z-10 mt-2 w-full bg-white border border-gray-300 rounded-lg shadow-lg">
+            <div className="max-h-60 overflow-y-auto">
+              {listOfAbilities.map((item) => (
+                <button
+                  type="button"
+                  onClick={() => handleSelection('abilities', item)}
+                  className={`p-2 w-full text-left ${typeOfSearch?.abilities === item ? 'bg-blue-400' : ''}`}
+                  key={item}
+                >
+                  {item}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+
+      <button
+        type="button"
+        className="py-2 px-12 flex justify-center items-center bg-slate-300 rounded-xl cursor-pointer relative shadow-component-sw"
         onClick={() => {
-          setOpenAbilities(!openAbilities);
-          if (openType) {
-            setOpenType(!openType);
-          }
+          setOpenType(false);
+          setOpenAbilities(false);
+          handleHitsPoint();
         }}
       >
-        <button type="button">{typeOfsearch?.abilities || 'Habilidade'}</button>
-        {openAbilities && (
-          <div
-            className="flex flex-col absolute -right-[180px] rounded-lg
-            -top-[1700%] h-[1000px] w-[150px] overflow-scroll overflow-x-hidden 
-            justify-center items-center shadow-component-sw bg-slate-800 
-            gap-2 p-2
-          "
-          >
-            {listOfAbilities.map((item) => (
-              <button
-                onClick={() => handleTypeOfsearch({ abilities: item })}
-                className="p-2 bg-slate-200 w-full rounded-md"
-                key={item}
-              >
-                {item}
-              </button>
-            ))}
-          </div>
-        )}
-      </div>
-      <button
-      type="button"
-      className="py-2 px-12 flex justify-center items-center 
-      bg-slate-300 rounded-xl cursor-pointer relative 
-        shadow-component-sw
-      "
-      onClick={() => {
-        setOpenType(false)
-        setOpenAbilities(false)
-        handleHitsPoint()
-      }}
-    >
-      hitpoint
-    </button>
+        Hitpoint
+      </button>
     </div>
   );
 }

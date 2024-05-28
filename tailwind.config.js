@@ -44,29 +44,18 @@ export default {
       keyframes: {
         'scale-anime': {
           '0%': { transform: 'scale(0.5)' },
-          '100%': { transform: 'scale(1)' },
+          '100%': { transform: 'scale(1)' }
         },
         wave: {
-          '0%': {
-            transform: 'translateX(0px)',
-            opacity: '0',
-          },
-          '10%': { transform: 'translateX(100%)', opacity: '1' },
-          '50%': { transform: 'translateX(600%)', opacity: '1' },
-          '80%': { transform: 'translateX(1200%)', opacity: '1' },
-          '100%': {
-            transform: 'translateX(1500%)',
-            opacity: '0',
-          },
+          '0%': { transform: 'translateX(0px)', opacity: '0' },
+          '10%': { transform: 'translateX(10vw)', opacity: '1' },
+          '50%': { transform: 'translateX(50vw)', opacity: '1' },
+          '80%': { transform: 'translateX(100vw)', opacity: '1' },
+          '100%': { transform: 'translateX(110vw)', opacity: '0' },
         },
       },
       animation: {
-        'waving-hand-ten': 'wave 6s linear infinite',
-        'waving-hand-twenty': 'wave 15s linear infinite',
-        'waving-hand-thirty': 'wave 20s linear infinite',
-        'waving-hand-fourty': 'wave 25s linear infinite',
-        'waving-hand-thirty-five': 'wave 35s linear infinite',
-        'scale-anime': 'scale-anime .5s ease-out forwards',
+        'waving-hand-ten': 'wave 8s linear infinite',
       },
     },
   },

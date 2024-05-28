@@ -18,16 +18,30 @@ export function InputTextSearch() {
         className="text-ice w-full p-2 text-sm bg-transparent
           outline-none border-b relative
           peer
-          
-          data-[error=true]:border-red-700"
+        "
       />
       <label
         htmlFor="search-pokemon"
-        className="text-white font-semibold capitalize
-          bottom-3 left-7 absolute duration-300 
+        className="text-white capitalize
+          bottom-3 left-7 
 
-          group-focus-within:bottom-10
-          group-focus-within:left-4
+          cursor-pointer transform transition-all duration-300 
+          absolute top-0 v h-full flex items-center pl-6
+          text-sm truncate overflow-hidden w-full
+          text-font-blue-dark font-semibold antialiased
+          
+          group-focus-within:text-xs 
+          group-focus-within:font-bold
+          group-focus-within:-translate-y-full
+          group-focus-within:h-1/2 
+          group-focus-within:left-0
+          group-focus:h-1/2
+          group-focus:bg-red-500
+          
+          peer-valid:font-semibold 
+          peer-valid:text-xs 
+          peer-valid:h-1/3
+          peer-valid:left-0
         "
       >
         buscar

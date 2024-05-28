@@ -2,19 +2,30 @@
 /* eslint-disable react/prop-types */
 import React from 'react'
 
-export default function CardPokemon({ pokemon, type, image_url, hitpoints }) {
+export default function CardPokemon({ pokemon, type, image_url, hitpoints, abilities }) {
+  
   return (
     <section
-      className="max-h-[300px] min-h-[300px] rounded-3xl flex flex-col
-        relative border-[4px]  shadow-component-sw
-        hover:scale-110 group duration-300 
-        border-red-700 bg-red-700
+      className="max-h-[320px] min-h-[300px] rounded-3xl flex flex-col
+        relative shadow-component-sw 
+        hover:scale-110 group duration-300  
+        
       "
     >
-      <div className="flex flex-1 justify-around rounded-3xl items-center bg-white peer">
-        <div className="flex flex-col">
-          <span>type</span>
-          <span>{type}</span>
+      <div className="flex flex-1 justify-around rounded-3xl items-center
+       bg-white duration-300 border-[3px] p-4
+        hover:shadow-[inset_0_4px_20px_rgba(1,1,1,1)]
+        peer
+       ">
+        <div className="flex flex-col gap-2 font-medium text-xs">
+          <div className='flex gap-2'>
+            <span>type:</span>
+            <span>{type}</span>
+          </div>
+          <div className='flex gap-2'>
+            <span>habilidades:</span>
+            <span>{abilities}</span>
+          </div>
         </div>
         <img
           src={image_url}
@@ -26,9 +37,9 @@ export default function CardPokemon({ pokemon, type, image_url, hitpoints }) {
         />
       </div>
       <aside
-        className="p-2 text-white z-40 bg-red-700 absolute 
+        className="p-2 text-white z-40 bgpsychic absolute 
         w-[150px] -left-3 -top-4 rounded-full flex gap-4 justify-center 
-        items-center
+        items-center shadow-component-sw bg-psychic
       "
       >
         <img
@@ -40,13 +51,13 @@ export default function CardPokemon({ pokemon, type, image_url, hitpoints }) {
         <strong>{hitpoints}</strong>
       </aside>
       <footer
-        className="absolute h-1/4 w-full bottom-0 left-0 bg-red-700
+        className="absolute h-1/5 w-full bottom-0 left-0 bg-psychic
         flex justify-center items-center rounded-b-xl p-4 duration-300
-
-        group-hover:justify-start
+        border-[3px]
+        group-hover:pr-28
        "
       >
-        {/* <h1 className="font-bold text-white duration-300 ">{pokemon}</h1> */}
+        <h1 className="font-bold text-white ">{pokemon}</h1>
       </footer>
     </section>
   )

@@ -7,13 +7,13 @@ export const SearchPokemonContext = React.createContext()
 export function SearchPokemonProvider({ children }) {
   const [pokemonsListFlag, setPokemonsFlag] = React.useState([])
   const [pokemonsList, setPokemons] = React.useState([])
-  const [searcText, setSearcText] = React.useState([])
-  const [typeOfsearch, setTypeOfsearch] = React.useState('')
+  const [searchText, setSearchText] = React.useState([])
+  const [typeOfSearch, setTypeOfSearch] = React.useState('')
   const [listOfType, setListOfType] = React.useState([])
   const [listOfAbilities, setListOfAbilities] = React.useState([])
 
   const handleTypeOfsearch = (type) => {
-    setTypeOfsearch((prev) => {
+    setTypeOfSearch((prev) => {
       prev = type
       return prev
     })
@@ -25,7 +25,7 @@ export function SearchPokemonProvider({ children }) {
       const newListPokemon = pokemonsList?.filter((pokemon) =>
         pokemon.pokemon.toLowerCase().includes(text.toLowerCase()),
       )
-      setSearcText(newListPokemon.sort())
+      setSearchText(newListPokemon.sort())
     } else {
       return pokemonsListFlag
     }
@@ -50,15 +50,28 @@ export function SearchPokemonProvider({ children }) {
       try {
         const response = await fetch('https://dummyapi.online/api/pokemon')
         const pokemons = await response.json()
+
+        const orderedResponse = pokemons.sort((a, b) => {
+          const first = a.pokemon.toLowerCase();
+          const second = b.pokemon.toLowerCase();
+        
+          if (first < second) {
+            return -1;
+          }
+          if (first > second) {
+            return 1;
+          }
+          return 0;
+        });
         setPokemons((prev) => {
-          prev = pokemons
+          prev = orderedResponse
           return prev
         })
         setPokemonsFlag((prev) => {
-          prev = pokemons
+          prev = orderedResponse
           return prev
         })
-        return pokemons
+        return orderedResponse
       } catch (err) {
         return err
       }
@@ -85,31 +98,37 @@ export function SearchPokemonProvider({ children }) {
   }, [pokemonsListFlag])
 
   React.useEffect(() => {
-    if (typeOfsearch) {
-      for (const item in typeOfsearch) {
+    if (typeOfSearch) {
+      for (const item in typeOfSearch) {
         setPokemons(
           pokemonsListFlag.filter((pokemon) =>
-            pokemon[item].includes(typeOfsearch[item]),
+            pokemon[item].includes(typeOfSearch[item]),
           ),
         )
       }
     }
-  }, [pokemonsListFlag, typeOfsearch])
+  }, [pokemonsListFlag, typeOfSearch])
 
   const handleHitsPoint = () => {
-    const orderByPoint = pokemonsList.sort((a, b) => b.hitpoints - a.hitpoints)
-    console.log(orderByPoint)
-    setPokemons(orderByPoint)
+    const sortedPokemons = [...pokemonsList].sort((a, b) => b.hitpoints - a.hitpoints);
+    setPokemons(sortedPokemons);
+  }
+
+  const clearFilter = () => {
+    setSearchText([])
+    setTypeOfSearch('')
+    setPokemons(pokemonsListFlag);
   }
 
   const returnProvider = {
-      typeOfsearch,
+     typeOfSearch,
       handleTypeOfsearch,
-      pokemonsList: searcText.length > 0 ? searcText : pokemonsList,
+      pokemonsList: searchText.length > 0 ? searchText : pokemonsList,
       searchByText,
       listOfType,
       listOfAbilities,
       handleHitsPoint,
+      clearFilter
   }
 
   return (

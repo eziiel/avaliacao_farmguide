@@ -4,9 +4,10 @@ import CardPokemon from '../card'
 
 export default function MainPokemons() {
   const { pokemonsList } = React.useContext(SearchPokemonContext)
+
   return (
     <main
-      className="bg-slate-800 flex-1 flex justify-around 
+      className="bg-slate-900 flex-1 flex justify-around 
       gap-4 flex-col items-center ml-[300px]
     "
     >
@@ -29,6 +30,7 @@ export default function MainPokemons() {
             type={pokemon.type}
             image_url={pokemon.image_url}
             hitpoints={pokemon.hitpoints}
+            abilities={pokemon.abilities}
           />
         ))}
       </div>

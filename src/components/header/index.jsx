@@ -2,12 +2,16 @@ import React from 'react'
 
 import { InputTextSearch } from '../filters/search'
 import SpecificSearch from '../filters/specific-search'
+import ClearFilterButton from '../utils/button/clear-filter'
+import { SearchPokemonContext } from '../../context/especific-search'
 
 function Header() {
+  const { clearFilter } = React.useContext(SearchPokemonContext)
   return (
     <div
       className=" w-[300px] flex flex-col justify-center gap-8 
-      items-center fixed left-0 top-0 h-full shadow-component-sw bg-slate-800
+      items-center fixed left-0 top-0 h-full shadow-component-sw 
+      bg-slate-900
     "
     >
       <img
@@ -20,6 +24,11 @@ function Header() {
 
         <SpecificSearch />
       </div>
+      <ClearFilterButton 
+        text='Limpar Filtro' 
+        action={() => clearFilter()} 
+        className="bg-water py-2 px-12 rounded-2xl text-ice font-medium"  
+      />
     </div>
   )
 }
