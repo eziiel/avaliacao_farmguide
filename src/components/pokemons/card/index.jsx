@@ -1,16 +1,15 @@
 
 // eslint-disable-next-line react/prop-types
-export const CardPokemon = ({key, pokemon, type, image_url, hitpoints}) => {
+export const CardPokemon = ({ pokemon, type, image_url, hitpoints}) => {
   return (
     <section 
-      className='min-h-[250px] rounded-3xl flex flex-col
-        relative border-[4px]
-        hover:scale-110 peer
+      className='max-h-[300px] min-h-[300px] rounded-3xl flex flex-col
+        relative border-[4px]  shadow-component-sw
+        hover:scale-110 group
         border-red-700 bg-red-700
       '
-      key={key}
     >
-      <div className="flex flex-1 justify-around rounded-3xl items-center bg-white ">
+      <div className="flex flex-1 justify-around rounded-3xl items-center bg-white peer">
         <div className="flex flex-col">
           <span>type</span>
           <span>{type}</span>
@@ -20,8 +19,8 @@ export const CardPokemon = ({key, pokemon, type, image_url, hitpoints}) => {
           src={image_url}
           alt="" 
           className="w-[200px] h-[200px] 
-            hover:scale-150
-            hover:z-40
+            group-hover:scale-125
+            group-hover:z-40
             
           "
         />
@@ -37,9 +36,11 @@ export const CardPokemon = ({key, pokemon, type, image_url, hitpoints}) => {
         <strong>{hitpoints}</strong>
        </aside>
        <footer className="absolute h-1/4 w-full bottom-0 left-0 bg-red-700
-        flex justify-center items-center rounded-b-3xl
+        flex justify-center items-center rounded-b-xl p-4
+
+        group-hover:justify-start
        ">
-        <h1>
+        <h1 className="font-bold text-white">
           {pokemon}
         </h1>
        </footer>

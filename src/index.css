@@ -14,3 +14,19 @@ body {
   width: 100vw;
   overflow-x: hidden;
 }
+
+*::-webkit-scrollbar {
+  width: 5px;            /* width of the entire scrollbar */
+  border-radius: 20px;
+  background: linear-gradient(to bottom, #045A89, #011E2E);        /* color of the tracking area */
+}
+
+*::-webkit-scrollbar-track-piece{
+  background: linear-gradient(to bottom, #045A89, #011E2E);        /* color of the tracking area */
+  border-radius: 30px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #E2E4FC; 
+  border-radius: 20px;
+}
