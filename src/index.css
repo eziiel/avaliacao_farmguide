@@ -8,12 +8,26 @@
   box-sizing: border-box;
 }
 
-html {
-  min-height: 100vh;
-  min-width: 100vw;
-}
 
 body {
   min-height: 100vh;
-  min-width: 100vw;
+  width: 100vw;
+  overflow-x: hidden;
+  font-family: "Nunito", sans-serif;
+}
+
+*::-webkit-scrollbar {
+  width: 5px;           
+  border-radius: 20px;
+  background: linear-gradient(to bottom, #045A89, #011E2E);      
+}
+
+*::-webkit-scrollbar-track-piece{
+  background: linear-gradient(to bottom, #045A89, #011E2E);      
+  border-radius: 30px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #E2E4FC; 
+  border-radius: 20px;
 }
