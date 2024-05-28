@@ -12,7 +12,6 @@ function Header() {
       className=" w-full flex justify-center gap-8 p-8
       items-center h-full shadow-component-sw 
       bg-slate-900 duration-100
-
       screen800:w-[300px]
       screen800:fixed
       screen800:flex-col
