@@ -1,6 +1,7 @@
 /* eslint-disable camelcase */
 /* eslint-disable react/prop-types */
 import React from 'react'
+import CardPokemonDialog from '../../../assets/card-pokemon-dialog'
 
 export default function CardPokemon({ pokemon, type, image_url, hitpoints, abilities }) {
   
@@ -26,24 +27,41 @@ export default function CardPokemon({ pokemon, type, image_url, hitpoints, abili
             screen1050:flex-col
             screen1400:flex-row
 
+
           '>
             <span>habilidades:</span>
             <span>{abilities}</span>
           </div>
         </div>
-        <img
-          src={image_url}
-          alt={`imagem de um pokemon - ${pokemon}`}
-          className="w-[200px] h-[200px] duration-300 
-            group-hover:scale-125
-            group-hover:z-40 
-          "
-        />
+        <div className=' delay-300
+          group-hover:before:content-[""] 
+          group-hover:before:absolute 
+          group-hover:before:w-[150px]
+          group-hover:before:h-[0,1px]
+          group-hover:before:bg-black
+          group-hover:before:top-3/4
+          group-hover:before:right-1/5
+          group-hover:before:bg-radial-gradient
+          group-hover:before:shadow-card-img
+          group-hover:before:z-0
+
+        '>
+          <img
+            src={image_url}
+            alt={`imagem de um pokemon - ${pokemon}`}
+            className="w-[200px] h-[200px] duration-300 
+              z-40 
+              group-hover:scale-125
+              group-hover:z-50
+            "
+          />
+        </div>
       </div>
       <aside
         className="p-2 text-white z-40 bgpsychic absolute 
         w-[150px] -left-3 -top-4 rounded-full flex gap-4 justify-center 
         items-center shadow-component-sw bg-psychic
+        
       "
       >
         <img
@@ -57,11 +75,12 @@ export default function CardPokemon({ pokemon, type, image_url, hitpoints, abili
       <footer
         className="absolute h-1/5 w-full bottom-0 left-0 bg-psychic
         flex justify-center items-center rounded-b-xl p-4 duration-300
-        border-[3px]
+        border-[3px] gap-8
         group-hover:pr-28
        "
       >
         <h1 className="font-bold text-white ">{pokemon}</h1>
+        <CardPokemonDialog />
       </footer>
     </section>
   )
